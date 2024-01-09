@@ -68,7 +68,7 @@ public class OrderControllerTest {
             .build();
 
     @Test
-    public void getAllOrders() throws Exception {
+    public void testGetAllOrders() throws Exception {
         Mockito.when(orderService.getAll()).thenReturn(Collections.singletonList(order));
         mockMvc.perform(MockMvcRequestBuilders.get("/order/all").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -76,7 +76,7 @@ public class OrderControllerTest {
     }
 
     @Test
-    public void getOrder() throws Exception {
+    public void testGetOrder() throws Exception {
         Mockito.when(orderService.get(1L)).thenReturn(order);
         mockMvc.perform(MockMvcRequestBuilders.get("/order/{id}", order.getId()).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -84,7 +84,7 @@ public class OrderControllerTest {
     }
 
     @Test
-    public void getOrderByUserId() throws Exception {
+    public void testGetOrderByUserId() throws Exception {
         Mockito.when(orderService.getAllByUserId(1L)).thenReturn(Collections.singletonList(order));
         mockMvc.perform(
                         MockMvcRequestBuilders.get("/order/user/{id}", order.getUser().getId())
@@ -95,7 +95,7 @@ public class OrderControllerTest {
     }
 
     @Test
-    public void getOrderByClothesId() throws Exception {
+    public void testGetOrderByClothesId() throws Exception {
         Mockito.when(orderService.getAllByClothesId(1L)).thenReturn(Collections.singletonList(order));
         mockMvc.perform(
                         MockMvcRequestBuilders.get("/order/clothes/{id}", order.getClothes().getId())
@@ -106,7 +106,7 @@ public class OrderControllerTest {
     }
 
     @Test
-    public void deleteOrder() throws Exception {
+    public void testDeleteOrder() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.delete("/order/delete/{id}", order.getId()))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }

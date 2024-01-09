@@ -27,25 +27,25 @@ public class CategoryServiceTest {
             .build();
 
     @Test
-    public void getAllCategories() {
+    public void testGetAllCategories() {
         Mockito.when(categoryRepository.findAll()).thenReturn(Collections.singletonList(category));
         Assertions.assertEquals(category, categoryService.getAll().get(0));
     }
 
     @Test
-    public void getCategory() throws Exception {
+    public void testGetCategory() throws Exception {
         Mockito.when(categoryRepository.findById(Mockito.any(Long.class))).thenReturn(Optional.of(category));
         Assertions.assertEquals(category, categoryService.get(1L));
     }
 
     @Test
-    public void addCategory() {
+    public void testAddCategory() {
         Mockito.when(categoryRepository.save(Mockito.any(Category.class))).thenReturn(category);
         Assertions.assertEquals(category, categoryService.add(new CategoryDto()));
     }
 
     @Test
-    public void updateCategory() {
+    public void testUpdateCategory() {
         Mockito.when(categoryRepository.save(Mockito.any(Category.class))).thenReturn(category);
         Assertions.assertEquals(category, categoryService.update(category));
     }

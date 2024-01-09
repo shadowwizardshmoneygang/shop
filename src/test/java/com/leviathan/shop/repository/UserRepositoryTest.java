@@ -24,7 +24,7 @@ public class UserRepositoryTest {
             .build();
 
     @Test
-    public void findAll() {
+    public void testFindAll() {
         Mockito.when(userRepository.findAll())
                 .thenReturn(Collections.singletonList(user));
         Assertions.assertEquals(1, userRepository.findAll().size());
@@ -32,7 +32,7 @@ public class UserRepositoryTest {
     }
 
     @Test
-    public void find() throws Exception {
+    public void testFind() throws Exception {
         Mockito.when(userRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(user));
         Assertions.assertEquals(
                 user, userRepository.findById(1L).orElseThrow(
@@ -42,7 +42,7 @@ public class UserRepositoryTest {
     }
 
     @Test
-    public void saveAll() {
+    public void testSaveAll() {
         Mockito.when(userRepository.saveAll(Mockito.anyCollection()))
                 .thenReturn(Collections.singletonList(user));
         Assertions.assertEquals(1, userRepository.saveAll(Collections.singletonList(user)).size());

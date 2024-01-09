@@ -53,7 +53,7 @@ public class OrderRepositoryTest {
             .build();
 
     @Test
-    public void findAll() {
+    public void testFindAll() {
         Mockito.when(orderRepository.findAll())
                 .thenReturn(Collections.singletonList(order));
         Assertions.assertEquals(1, orderRepository.findAll().size());
@@ -61,7 +61,7 @@ public class OrderRepositoryTest {
     }
 
     @Test
-    public void find() throws Exception {
+    public void testFind() throws Exception {
         Mockito.when(orderRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(order));
         Assertions.assertEquals(
                 order, orderRepository.findById(1L).orElseThrow(
@@ -71,21 +71,21 @@ public class OrderRepositoryTest {
     }
 
     @Test
-    public void findAllByUserId() {
+    public void testFindAllByUserId() {
         Mockito.when(orderRepository.findByUserId(Mockito.anyLong()))
                 .thenReturn(Collections.singletonList(order));
         Assertions.assertEquals(1, orderRepository.findByUserId(1L).size());
     }
 
     @Test
-    public void findAllByClothesId() {
+    public void testFindAllByClothesId() {
         Mockito.when(orderRepository.findByClothesId(Mockito.anyLong()))
                 .thenReturn(Collections.singletonList(order));
         Assertions.assertEquals(1, orderRepository.findByClothesId(1L).size());
     }
 
     @Test
-    public void saveAll() {
+    public void testSaveAll() {
         Mockito.when(orderRepository.saveAll(Mockito.anyCollection()))
                 .thenReturn(Collections.singletonList(order));
         Assertions.assertEquals(1, orderRepository.saveAll(Collections.singletonList(order)).size());

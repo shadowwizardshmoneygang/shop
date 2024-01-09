@@ -43,7 +43,7 @@ public class UserControllerTest {
             .build();
 
     @Test
-    public void getAllUsers() throws Exception {
+    public void testGetAllUsers() throws Exception {
         Mockito.when(userService.getAll()).thenReturn(Collections.singletonList(user));
         mockMvc.perform(MockMvcRequestBuilders.get("/user/all").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -51,7 +51,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void getUser() throws Exception {
+    public void testGetUser() throws Exception {
         Mockito.when(userService.get(1L)).thenReturn(user);
         mockMvc.perform(MockMvcRequestBuilders.get("/user/{id}", user.getId()).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -59,7 +59,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void addUser() throws Exception {
+    public void testAddUser() throws Exception {
         Mockito.when(userService.add(Mockito.any(UserDto.class))).thenReturn(user);
         mockMvc.perform(
                         MockMvcRequestBuilders.post("/user/add")
@@ -73,7 +73,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void updateUser() throws Exception {
+    public void testUpdateUser() throws Exception {
         Mockito.when(userService.update(Mockito.any(User.class))).thenReturn(user);
         mockMvc.perform(
                         MockMvcRequestBuilders.put("/user/update")
@@ -87,7 +87,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void deleteUser() throws Exception {
+    public void testDeleteUser() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.delete("/user/delete/{id}", user.getId()))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }

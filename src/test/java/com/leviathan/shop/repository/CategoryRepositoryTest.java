@@ -23,7 +23,7 @@ public class CategoryRepositoryTest {
             .build();
 
     @Test
-    public void findAll() {
+    public void testFindAll() {
         Mockito.when(categoryRepository.findAll())
                 .thenReturn(Collections.singletonList(category));
         Assertions.assertEquals(1, categoryRepository.findAll().size());
@@ -31,7 +31,7 @@ public class CategoryRepositoryTest {
     }
 
     @Test
-    public void find() throws Exception {
+    public void testFind() throws Exception {
         Mockito.when(categoryRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(category));
         Assertions.assertEquals(
                 category, categoryRepository.findById(1L).orElseThrow(
@@ -41,7 +41,7 @@ public class CategoryRepositoryTest {
     }
 
     @Test
-    public void saveAll() {
+    public void testSaveAll() {
         Mockito.when(categoryRepository.saveAll(Mockito.anyCollection()))
                 .thenReturn(Collections.singletonList(category));
         Assertions.assertEquals(1, categoryRepository.saveAll(Collections.singletonList(category)).size());

@@ -42,7 +42,7 @@ public class CategoryControllerTest {
             .build();
 
     @Test
-    public void getAllCategories() throws Exception {
+    public void testGetAllCategories() throws Exception {
         Mockito.when(categoryService.getAll()).thenReturn(Collections.singletonList(category));
         mockMvc.perform(MockMvcRequestBuilders.get("/category/all").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -50,7 +50,7 @@ public class CategoryControllerTest {
     }
 
     @Test
-    public void getCategory() throws Exception {
+    public void testGetCategory() throws Exception {
         Mockito.when(categoryService.get(1L)).thenReturn(category);
         mockMvc.perform(MockMvcRequestBuilders.get("/category/{id}", category.getId()).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -58,7 +58,7 @@ public class CategoryControllerTest {
     }
 
     @Test
-    public void addCategory() throws Exception {
+    public void testAddCategory() throws Exception {
         Mockito.when(categoryService.add(Mockito.any(CategoryDto.class))).thenReturn(category);
         mockMvc.perform(
                         MockMvcRequestBuilders.post("/category/add")
@@ -71,7 +71,7 @@ public class CategoryControllerTest {
     }
 
     @Test
-    public void updateCategory() throws Exception {
+    public void testUpdateCategory() throws Exception {
         Mockito.when(categoryService.update(Mockito.any(Category.class))).thenReturn(category);
         mockMvc.perform(
                         MockMvcRequestBuilders.put("/category/update")
@@ -84,7 +84,7 @@ public class CategoryControllerTest {
     }
 
     @Test
-    public void deleteCategory() throws Exception {
+    public void testDeleteCategory() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.delete("/category/delete/{id}", category.getId()))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }

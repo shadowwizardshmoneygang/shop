@@ -43,7 +43,7 @@ public class CollectionControllerTest {
             .build();
 
     @Test
-    public void getAllCollections() throws Exception {
+    public void testGetAllCollections() throws Exception {
         Mockito.when(collectionService.getAll()).thenReturn(Collections.singletonList(collection));
         mockMvc.perform(MockMvcRequestBuilders.get("/collection/all").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -51,7 +51,7 @@ public class CollectionControllerTest {
     }
 
     @Test
-    public void getCollection() throws Exception {
+    public void testGetCollection() throws Exception {
         Mockito.when(collectionService.get(1L)).thenReturn(collection);
         mockMvc.perform(MockMvcRequestBuilders.get("/collection/{id}", collection.getId()).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -59,7 +59,7 @@ public class CollectionControllerTest {
     }
 
     @Test
-    public void addCollection() throws Exception {
+    public void testAddCollection() throws Exception {
         Mockito.when(collectionService.add(Mockito.any(CollectionDto.class))).thenReturn(collection);
         mockMvc.perform(
                         MockMvcRequestBuilders.post("/collection/add")
@@ -73,7 +73,7 @@ public class CollectionControllerTest {
     }
 
     @Test
-    public void updateCollection() throws Exception {
+    public void testUpdateCollection() throws Exception {
         Mockito.when(collectionService.update(Mockito.any(Collection.class))).thenReturn(collection);
         mockMvc.perform(
                         MockMvcRequestBuilders.put("/collection/update")
@@ -87,7 +87,7 @@ public class CollectionControllerTest {
     }
 
     @Test
-    public void deleteCollection() throws Exception {
+    public void testDeleteCollection() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.delete("/collection/delete/{id}", collection.getId()))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }

@@ -42,7 +42,7 @@ public class ClothesRepositoryTest {
             .build();
 
     @Test
-    public void findAll() {
+    public void testFindAll() {
         Mockito.when(clothesRepository.findAll())
                 .thenReturn(Collections.singletonList(clothes));
         Assertions.assertEquals(1, clothesRepository.findAll().size());
@@ -50,7 +50,7 @@ public class ClothesRepositoryTest {
     }
 
     @Test
-    public void find() throws Exception {
+    public void testFind() throws Exception {
         Mockito.when(clothesRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(clothes));
         Assertions.assertEquals(
                 clothes, clothesRepository.findById(1L).orElseThrow(
@@ -60,21 +60,21 @@ public class ClothesRepositoryTest {
     }
 
     @Test
-    public void findAllByCollectionId() {
+    public void testFindAllByCollectionId() {
         Mockito.when(clothesRepository.findByCollectionId(Mockito.anyLong()))
                 .thenReturn(Collections.singletonList(clothes));
         Assertions.assertEquals(1, clothesRepository.findByCollectionId(1L).size());
     }
 
     @Test
-    public void findAllByCategoryId() {
+    public void testFindAllByCategoryId() {
         Mockito.when(clothesRepository.findByCategoryId(Mockito.anyLong()))
                 .thenReturn(Collections.singletonList(clothes));
         Assertions.assertEquals(1, clothesRepository.findByCategoryId(1L).size());
     }
 
     @Test
-    public void saveAll() {
+    public void testSaveAll() {
         Mockito.when(clothesRepository.saveAll(Mockito.anyCollection()))
                 .thenReturn(Collections.singletonList(clothes));
         Assertions.assertEquals(1, clothesRepository.saveAll(Collections.singletonList(clothes)).size());

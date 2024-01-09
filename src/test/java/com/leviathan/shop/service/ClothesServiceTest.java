@@ -52,39 +52,39 @@ public class ClothesServiceTest {
             .build();
 
     @Test
-    public void getAllCategories() {
+    public void testGetAllCategories() {
         Mockito.when(clothesRepository.findAll()).thenReturn(Collections.singletonList(clothes));
         Assertions.assertEquals(clothes, clothesService.getAll().get(0));
     }
 
     @Test
-    public void getCategory() throws Exception {
+    public void testGetCategory() throws Exception {
         Mockito.when(clothesRepository.findById(Mockito.any(Long.class))).thenReturn(Optional.of(clothes));
         Assertions.assertEquals(clothes, clothesService.get(1L));
     }
 
     @Test
-    public void getClothesByCollectionId() {
+    public void testGetClothesByCollectionId() {
         Mockito.when(clothesRepository.findByCollectionId(Mockito.any(Long.class)))
                 .thenReturn(Collections.singletonList(clothes));
         Assertions.assertEquals(clothes, clothesService.getAllByCollectionId(1L).get(0));
     }
 
     @Test
-    public void getClothesByCategoryId() {
+    public void testGetClothesByCategoryId() {
         Mockito.when(clothesRepository.findByCategoryId(Mockito.any(Long.class)))
                 .thenReturn(Collections.singletonList(clothes));
         Assertions.assertEquals(clothes, clothesService.getAllByCategoryId(1L).get(0));
     }
 
     @Test
-    public void addClothes() throws Exception {
+    public void testAddClothes() throws Exception {
         Mockito.when(clothesRepository.save(Mockito.any(Clothes.class))).thenReturn(clothes);
         Assertions.assertEquals(clothes, clothesService.add(new ClothesDto()));
     }
 
     @Test
-    public void updateClothes() {
+    public void testUpdateClothes() {
         Mockito.when(clothesRepository.save(Mockito.any(Clothes.class))).thenReturn(clothes);
         Assertions.assertEquals(clothes, clothesService.update(clothes));
     }

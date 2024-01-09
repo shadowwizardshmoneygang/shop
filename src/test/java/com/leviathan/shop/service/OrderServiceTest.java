@@ -63,39 +63,39 @@ public class OrderServiceTest {
             .build();
 
     @Test
-    public void getAllCategories() {
+    public void testGetAllCategories() {
         Mockito.when(orderRepository.findAll()).thenReturn(Collections.singletonList(order));
         Assertions.assertEquals(order, orderService.getAll().get(0));
     }
 
     @Test
-    public void getCategory() throws Exception {
+    public void testGetCategory() throws Exception {
         Mockito.when(orderRepository.findById(Mockito.any(Long.class))).thenReturn(Optional.of(order));
         Assertions.assertEquals(order, orderService.get(1L));
     }
 
     @Test
-    public void getClothesByCollectionId() {
+    public void testGetClothesByCollectionId() {
         Mockito.when(orderRepository.findByUserId(Mockito.any(Long.class)))
                 .thenReturn(Collections.singletonList(order));
         Assertions.assertEquals(order, orderService.getAllByUserId(1L).get(0));
     }
 
     @Test
-    public void getClothesByCategoryId() {
+    public void testGetClothesByCategoryId() {
         Mockito.when(orderRepository.findByClothesId(Mockito.any(Long.class)))
                 .thenReturn(Collections.singletonList(order));
         Assertions.assertEquals(order, orderService.getAllByClothesId(1L).get(0));
     }
 
     @Test
-    public void addClothes() throws Exception {
+    public void testAddClothes() throws Exception {
         Mockito.when(orderRepository.save(Mockito.any(Order.class))).thenReturn(order);
         Assertions.assertEquals(order, orderService.add(new OrderDto()));
     }
 
     @Test
-    public void updateClothes() {
+    public void testUpdateClothes() {
         Mockito.when(orderRepository.save(Mockito.any(Order.class))).thenReturn(order);
         Assertions.assertEquals(order, orderService.update(order));
     }

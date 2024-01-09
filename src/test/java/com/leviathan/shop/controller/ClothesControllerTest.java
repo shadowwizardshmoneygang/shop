@@ -57,7 +57,7 @@ public class ClothesControllerTest {
             .build();
 
     @Test
-    public void getAllClothes() throws Exception {
+    public void testGetAllClothes() throws Exception {
         Mockito.when(clothesService.getAll()).thenReturn(Collections.singletonList(clothes));
         mockMvc.perform(MockMvcRequestBuilders.get("/clothes/all").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -65,7 +65,7 @@ public class ClothesControllerTest {
     }
 
     @Test
-    public void getClothes() throws Exception {
+    public void testGetClothes() throws Exception {
         Mockito.when(clothesService.get(1L)).thenReturn(clothes);
         mockMvc.perform(MockMvcRequestBuilders.get("/clothes/{id}", clothes.getId()).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -73,7 +73,7 @@ public class ClothesControllerTest {
     }
 
     @Test
-    public void getClothesByCollectionId() throws Exception {
+    public void testGetClothesByCollectionId() throws Exception {
         Mockito.when(clothesService.getAllByCollectionId(1L)).thenReturn(Collections.singletonList(clothes));
         mockMvc.perform(
                         MockMvcRequestBuilders.get("/clothes/collection/{id}", clothes.getCollection().getId())
@@ -84,7 +84,7 @@ public class ClothesControllerTest {
     }
 
     @Test
-    public void getClothesByCategoryId() throws Exception {
+    public void testGetClothesByCategoryId() throws Exception {
         Mockito.when(clothesService.getAllByCategoryId(1L)).thenReturn(Collections.singletonList(clothes));
         mockMvc.perform(
                         MockMvcRequestBuilders.get("/clothes/category/{id}", clothes.getCollection().getId())
@@ -95,7 +95,7 @@ public class ClothesControllerTest {
     }
 
     @Test
-    public void deleteClothes() throws Exception {
+    public void testDeleteClothes() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.delete("/clothes/delete/{id}", clothes.getId()))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }

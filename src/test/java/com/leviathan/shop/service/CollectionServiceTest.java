@@ -28,25 +28,25 @@ public class CollectionServiceTest {
             .build();
 
     @Test
-    public void getAllCollections() {
+    public void testGetAllCollections() {
         Mockito.when(collectionRepository.findAll()).thenReturn(Collections.singletonList(collection));
         Assertions.assertEquals(collection, collectionService.getAll().get(0));
     }
 
     @Test
-    public void getCollection() throws Exception {
+    public void testGetCollection() throws Exception {
         Mockito.when(collectionRepository.findById(Mockito.any(Long.class))).thenReturn(Optional.of(collection));
         Assertions.assertEquals(collection, collectionService.get(1L));
     }
 
     @Test
-    public void addCollection() {
+    public void testAddCollection() {
         Mockito.when(collectionRepository.save(Mockito.any(Collection.class))).thenReturn(collection);
         Assertions.assertEquals(collection, collectionService.add(new CollectionDto()));
     }
 
     @Test
-    public void updateCollection() {
+    public void testUpdateCollection() {
         Mockito.when(collectionRepository.save(Mockito.any(Collection.class))).thenReturn(collection);
         Assertions.assertEquals(collection, collectionService.update(collection));
     }

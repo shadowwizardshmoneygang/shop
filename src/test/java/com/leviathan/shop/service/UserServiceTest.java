@@ -28,25 +28,25 @@ public class UserServiceTest {
             .build();
 
     @Test
-    public void getAllUsers() {
+    public void testGetAllUsers() {
         Mockito.when(userRepository.findAll()).thenReturn(Collections.singletonList(user));
         Assertions.assertEquals(user, userService.getAll().get(0));
     }
 
     @Test
-    public void getUser() throws Exception {
+    public void testGetUser() throws Exception {
         Mockito.when(userRepository.findById(Mockito.any(Long.class))).thenReturn(Optional.of(user));
         Assertions.assertEquals(user, userService.get(1L));
     }
 
     @Test
-    public void addUser() {
+    public void testAddUser() {
         Mockito.when(userRepository.save(Mockito.any(User.class))).thenReturn(user);
         Assertions.assertEquals(user, userService.add(new UserDto()));
     }
 
     @Test
-    public void updateUser() {
+    public void testUpdateUser() {
         Mockito.when(userRepository.save(Mockito.any(User.class))).thenReturn(user);
         Assertions.assertEquals(user, userService.update(user));
     }
